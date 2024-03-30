@@ -1,0 +1,206 @@
+:root {
+    --font-main: "Lato", sans-serif;
+    --font-secondary: "Russo One", sans-serif;
+
+    --container: 1440px;
+    --container-padding: clamp(15px, 3vw, 75px);
+
+    --nav-gap: clamp(10px, 3vw, 25px);
+
+    --color-accent: #f658ba;
+    --color-light: #fffafd;
+    --color-background: #7a0b5d;
+    --dark: #000;
+    --dark-rgb: 0, 0, 0;
+
+    --tr: .2s ease-in;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    font-family: var(--font-main);
+    background-color: var(--color-background);
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    position: relative;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--container);
+    margin: 0 auto;
+    border-radius: 16px;
+    border: 6px solid #fff;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+    background-color: var(--color-light);
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    position: relative;
+    z-index: 999;
+}
+
+.header__logo {
+    display: block;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-image: url(../img/logo.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header__nav {
+    display: flex;
+    gap: var(--nav-gap);
+}
+
+.header__link {
+    font-size: 18px;
+    color: rgba(var(--dark-rgb), .75);
+    background-color: var(--color-light);
+    letter-spacing: 3px;
+    text-transform: lowercase;
+    transition: color var(--tr);
+}
+
+.header__link:hover {
+    color: var(--color-accent);
+}
+
+.main {
+    position: relative;
+}
+
+.main__img {
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+}
+
+.main__img._toy {
+    bottom: 0;
+    height: clamp(400px, 50vw, 600px);
+}
+
+.main__img._decor {
+    top: -15%;
+    width: 390px;
+}
+
+.main__title {
+    position: absolute;
+    top: 0;
+    right: 0;
+    max-height: 270px;
+    margin: 0;
+    color: rgba(var(--dark-rgb), .75);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    writing-mode: vertical-rl;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    grid-template-areas: 'a .' 'c b';
+    align-items: center;
+    gap: clamp(20px, 3vw, 80px) 0;
+    padding-top: clamp(20px, 10vw, 60px);
+    padding-bottom: clamp(20px, 5vw, 50px);
+    position: relative;
+}
+
+.grid__item:nth-child(1) {
+    grid-area: a;
+}
+
+.grid__item:nth-child(2) {
+    grid-area: b;
+    justify-self: end;
+}
+
+.grid__item:nth-child(3) {
+    grid-area: c;
+    align-self: end;
+}
+
+.grid__title {
+    margin-top: 0;
+    margin-bottom: 26px;
+    font-family: var(--font-secondary);
+    font-size: 80px;
+    font-weight: 400;
+    color: var(--color-accent);
+    letter-spacing: 6px;
+    text-transform: lowercase;
+}
+
+.grid__description {
+    max-width: 338px;
+    color: rgba(var(--dark-rgb), .75);
+    font-size: 14px;
+    line-height: 1.7;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.grid__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    max-width: 320px;
+    padding: 30px 40px;
+    border-radius: 40px;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--dark);
+    background-color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -.3px;
+    box-shadow: 0 0 40px 0 rgba(var(--dark-rgb), .13);
+    transform: scale(1);
+    transition: background-color var(--tr), box-shadow var(--tr), transform var(--tr);
+}
+
+.grid__link::after {
+    content: "";
+    display: block;
+    width: 20px;
+    height: 22px;
+    background-image: url(../img/arrow-next.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.grid__link:hover {
+    background-color: var(--color-accent);
+    box-shadow: 0 0 40px 0 var(--color-accent);
+    transform: scale(1.1);
+}
